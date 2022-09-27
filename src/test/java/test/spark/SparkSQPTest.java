@@ -1,7 +1,6 @@
 package test.spark;
 
 
-import static org.junit.Assert.assertEquals;
 //import static org.junit.Assert.fail;
 
 import java.io.BufferedReader;
@@ -19,6 +18,8 @@ import org.junit.Test;
 
 import mainengine.IMainEngine;
 import mainengine.SessionQueryProcessorEngine;
+
+		import static org.junit.Assert.*;
 
 /**
  * Test class for SimpleQueryProcessorEngine AND for the ENTIRE ENGINE
@@ -156,9 +157,7 @@ public class SparkSQPTest {
 		testedQPEngine.answerCubeQueryFromString(testQueryString1);   /**/
 		File fileProduced1 = new File("OutputFiles/CubeQueryLoan1_FailTheTest.tab");
 		File fileReference1 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan1.tab");
-        boolean comparison1 = FileUtils.contentEquals(fileProduced1, fileReference1);
-		
-        assertEquals(comparison1 , false);				
+        assertFalse(FileUtils.contentEquals(fileProduced1, fileReference1));
 
 		//GIVE THE EXACT SAME QUERY
 		String testQueryString2 = 
@@ -172,12 +171,10 @@ public class SparkSQPTest {
 		testedQPEngine.answerCubeQueryFromString(testQueryString2);   /**/
 		
 
-		File fileProduced2 = new File("OutputFiles/CubeQueryLoan2_Copy.tab");
-		File fileReference2 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan2.tab");
-        boolean comparison2 = FileUtils.contentEquals(fileProduced2, fileReference2);
-		
-        assertEquals(comparison2 , true);/**/
-        
+		String fileProduced2 = getContents("OutputFiles/CubeQueryLoan2_Copy.tab");
+		String fileReference2 = getContents("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan2.tab");
+		assertEquals(fileReference2, fileProduced2);
+
 	}//end testanswerCubeQueryFromString
 
 	/**
