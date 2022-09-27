@@ -126,10 +126,10 @@ public class SessionQueryProcessorEngineTest {
          * S<k>: k stands for how many atoms the sigma selection condition has
          * CG-<xxx>: whether the group-by dimensions and the sigma dimensions have a partial coverage, are common, or are disjoint  
          */ 
-	/*
         File inputFile = new File("src/test/resources/InputFiles/pkdd99/_loanQueriesPrincipled.txt");
         testedQPEngine.answerCubeQueriesFromFile(inputFile);
 
+		/*
 		File fileProduced11 = new File("OutputFiles/LoanQuery11_S1_CG-Prtl.tab");
 		File fileReference11 = new File("src/test/resources/OutputFiles/pkdd99/Reference_LoanQuery11_S1_CG-Prtl.tsv");
         boolean comparison11 = FileUtils.contentEquals(fileProduced11, fileReference11);
@@ -198,11 +198,9 @@ public class SessionQueryProcessorEngineTest {
 		testedQPEngine.answerCubeQueryFromString(testQueryString2);   /**/
 		
 
-		File fileProduced2 = new File("OutputFiles/CubeQueryLoan2_Copy.tab");
-		File fileReference2 = new File("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan2.tab");
-        boolean comparison2 = FileUtils.contentEquals(fileProduced2, fileReference2);
-		
-        assertEquals(comparison2 , true);/**/
+		String fileProduced2 = getContents("OutputFiles/CubeQueryLoan2_Copy.tab");
+		String fileReference2 = getContents("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan2.tab");
+        assertEquals(fileReference2 , fileProduced2);/**/
         
 	}//end testanswerCubeQueryFromString
 
@@ -222,13 +220,10 @@ public class SessionQueryProcessorEngineTest {
 				"Sigma:account_dim.lvl2='south Moravia',status_dim.lvl0='Running Contract/OK'";
 
 		testedQPEngine.answerCubeQueryFromStringWithMetadata(testQueryString2);   /**/
-		
-		
-		String fileInfoProduced2 = getContents("OutputFiles/CubeQueryLoan22_Copy_Info.txt");
+		String fileInfoProduced2 = getContents("OutputFiles/CubeQueryLoan22_Copy_info.txt");
 		String fileInfoReference2 = getContents("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan22_Info.txt");
-        //boolean comparison2 = FileUtils.contentEquals(fileInfoProduced2, fileInfoReference2);
         assertEquals(fileInfoProduced2 , fileInfoReference2);/**/
-	}//end method testanswerCubeQueryFromStringWithMetadata
+	}
 
 	
 	/**
@@ -366,7 +361,7 @@ public class SessionQueryProcessorEngineTest {
         //boolean comparison_11_1 = FileUtils.contentEquals(fileProduced_11_1, fileReference_11_1);
         assertEquals(fileProduced_11_1 , fileReference_11_1);
 
-        String fileProduced_11_2 = getContents("OutputFiles/CubeQueryLoan11_Prague_Info.txt");
+        String fileProduced_11_2 = getContents("OutputFiles/CubeQueryLoan11_Prague_info.txt");
 		String fileReference_11_2 = getContents("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan11_Prague_Info.txt");
         //boolean comparison_11_2 = FileUtils.contentEquals(fileProduced_11_2, fileReference_11_2);
         assertEquals(fileProduced_11_2 , fileReference_11_2);
@@ -397,7 +392,7 @@ public class SessionQueryProcessorEngineTest {
         //boolean comparison_12_1 = FileUtils.contentEquals(fileProduced_12_1, fileReference_12_1);
         assertEquals(fileProduced_12_1 , fileReference_12_1);
 
-        String fileProduced_12_2 = getContents("OutputFiles/CubeQueryLoan12_Sum1998_Info.txt");
+        String fileProduced_12_2 = getContents("OutputFiles/CubeQueryLoan12_Sum1998_info.txt");
 		String fileReference_12_2 = getContents("src/test/resources/OutputFiles/pkdd99/Reference_CubeQueryLoan12_Sum1998_Info.txt");
         //boolean comparison_12_2 = FileUtils.contentEquals(fileProduced_12_2, fileReference_12_2);
         assertEquals(fileProduced_12_2 , fileReference_12_2);

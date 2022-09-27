@@ -6,7 +6,7 @@ import java.sql.Statement;
 import static org.junit.Assert.fail;
 
 public class DockerTest {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/pkdd99", "CinecubesUser", "Cinecubes");
